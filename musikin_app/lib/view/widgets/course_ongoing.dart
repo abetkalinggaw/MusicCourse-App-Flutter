@@ -1,6 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api, unused_field
 
-import '../constant/services.dart';
+import 'package:musikin_app/constant/services.dart';
 
 class OngoingCourse extends StatefulWidget {
   const OngoingCourse({Key? key}) : super(key: key);
@@ -74,6 +74,7 @@ class _OngoingCourseState extends State<OngoingCourse> {
                     name: course.name,
                     category: course.category,
                     mentorName: course.mentorName,
+                    onTap: () {},
                   ),
                 );
               },

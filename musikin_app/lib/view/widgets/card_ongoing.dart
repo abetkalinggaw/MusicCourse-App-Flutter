@@ -1,4 +1,4 @@
-import '../constant/services.dart';
+import 'package:musikin_app/constant/services.dart';
 
 class CardOngoingCourse extends StatelessWidget {
   final String name;
@@ -11,8 +11,11 @@ class CardOngoingCourse extends StatelessWidget {
     required this.category,
     required this.mentorName,
     required this.image,
+    required this.onTap,
     super.key,
   });
+
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +37,7 @@ class CardOngoingCourse extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20),
@@ -51,6 +54,26 @@ class CardOngoingCourse extends StatelessWidget {
                         style: pCategory.copyWith(
                           color: white,
                         ),
+                      ),
+                    ),
+                  ),
+                ),
+                Consumer<IconColor>(
+                  builder: (context, iconColor, child) => Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: black,
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: IconButton(
+                        icon: Icon(
+                          iconColor.isLiked
+                              ? Icons.favorite
+                              : Icons.favorite_border,
+                        ),
+                        color: iconColor.isLiked ? Colors.red : Colors.white,
+                        onPressed: () => iconColor.toggleLiked(),
                       ),
                     ),
                   ),

@@ -1,4 +1,4 @@
-import '../constant/services.dart';
+import 'package:musikin_app/constant/services.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,7 +11,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late SharedPreferences logindata;
   String username = '';
 
-  int _selectedIndex = 0;
+  var _selectedIndex = 0;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -34,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -190,6 +191,72 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
+      bottomNavigationBar: Container(
+        height: size.width * .155,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(.15),
+              blurRadius: 30,
+              offset: const Offset(0, 10),
+            ),
+          ],
+        ),
+        child: ListView.builder(
+          itemCount: 4,
+          scrollDirection: Axis.horizontal,
+          padding: EdgeInsets.symmetric(horizontal: size.width * .07),
+          itemBuilder: (context, index) => InkWell(
+            onTap: () {
+              setState(
+                () {
+                  _selectedIndex = index;
+                },
+              );
+            },
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 1500),
+                  curve: Curves.fastLinearToSlowEaseIn,
+                  margin: EdgeInsets.only(
+                    bottom: index == _selectedIndex ? 0 : size.width * .029,
+                    right: size.width * .0422,
+                    left: size.width * .0422,
+                  ),
+                  width: size.width * .128,
+                  height: index == _selectedIndex ? size.width * .014 : 0,
+                  decoration: const BoxDecoration(
+                    color: Colors.blueAccent,
+                    borderRadius: BorderRadius.vertical(
+                      bottom: Radius.circular(10),
+                    ),
+                  ),
+                ),
+                Icon(
+                  listOfIcons[index],
+                  size: size.width * .076,
+                  color: index == _selectedIndex
+                      ? Colors.blueAccent
+                      : Colors.black38,
+                ),
+                SizedBox(height: size.width * .03),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
+
+List<IconData> listOfIcons = [
+  Icons.home_outlined,
+  Icons.favorite_border,
+  Icons.bookmark_border,
+  Icons.person_outline,
+];

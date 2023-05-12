@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: deprecated_member_use, file_names, camel_case_types
-
-import '../constant/services.dart';
+import 'package:musikin_app/constant/services.dart';
 
 class customAppbar extends StatelessWidget {
   final String title;

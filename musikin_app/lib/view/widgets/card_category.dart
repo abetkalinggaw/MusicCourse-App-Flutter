@@ -1,4 +1,4 @@
-import '../constant/services.dart';
+import 'package:musikin_app/constant/services.dart';
 
 class CategoryCardView extends StatelessWidget {
   const CategoryCardView({super.key});

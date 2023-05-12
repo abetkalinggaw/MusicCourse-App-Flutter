@@ -1,6 +1,5 @@
 // ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
-
-import '../constant/services.dart';
+import 'package:musikin_app/constant/services.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);

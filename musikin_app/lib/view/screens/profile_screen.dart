@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import '../constant/services.dart';
+import 'package:musikin_app/constant/services.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
